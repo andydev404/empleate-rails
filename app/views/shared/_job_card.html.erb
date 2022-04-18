@@ -2,7 +2,7 @@
 <div class="bg-white p-6 rounded-lg border border-gray-100 hover:border-primary transition-colors cursor-pointer relative">
   <div class="flex items-start space-x-5">
     <% if job.account.logo.attached? %>
-      <%= image_tag job.account.logo, class: 'rounded w-16 h-16 object-cover object-center' %>
+      <%= image_tag job.account.logo.url, class: 'rounded w-16 h-16 object-cover object-center' %>
     <% else %>
       <img
         class="rounded w-16 h-16 object-cover object-center"

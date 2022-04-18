@@ -1,6 +1,6 @@
 <%= link_to company_jobs_path(company.slug) do %>
   <div class="bg-light-primary p-6 rounded-lg border border-transparent hover:border-primary transition-colors cursor-pointer">
-    <%= image_tag company.cover_image, class: 'h-40 rounded w-full object-cover object-center mb-6' %>
+    <%= image_tag company.cover_image.url, class: 'h-40 rounded w-full object-cover object-center mb-6' %>
     <h2 class="text-lg text-primary font-bold leading-6"><%= company.display_name %></h2>
     <p class="leading-relaxed text-base"><%= company.jobs.size %> vacantes</p>
   </div>

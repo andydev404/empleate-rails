@@ -6,9 +6,9 @@
 
 <section class=" max-w-screen-lg px-8 sm:px-0 py-24 md:space-x-8 mx-auto flex items-start">
   <div class="flex-1">
-    <%= image_tag @job.account.cover_image, alt: 'cover image', class: 'h-52 rounded-t rounded-b-none w-full object-cover object-center' %>
+    <%= image_tag @job.account.cover_image.url, alt: 'cover image', class: 'h-52 rounded-t rounded-b-none w-full object-cover object-center' %>
     <div class="flex items-start md:space-x-5 bg-light-primary px-4 py-8">
-      <%= image_tag @job.account.logo, alt: @job.account.display_name, class: 'h-28 rounded w-28 object-cover object-center' %>
+      <%= image_tag @job.account.logo.url, alt: @job.account.display_name, class: 'h-28 rounded w-28 object-cover object-center' %>
       <div>
         <h2 class="text-xl text-dark font-bold leading-6"><%= @job.title %></h2>
         <h3 class="tracking-widest text-primary"><%= @job.account.display_name %></h3>
