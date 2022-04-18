@@ -1,0 +1,31 @@
+<div class="mobile-navbar hidden" data-controller="mobile-navbar">
+  <div class="bg-white w-72 fixed left-0 top-0 h-screen shadow-sm z-20 p-5">
+    <div class="flex items-center justify-between">
+      <%= link_to root_path, class: 'font-bold text-xl' do %>
+        Empleate<span class="text-primary">.</span>
+      <% end %>
+      <button data-action="click->mobile-navbar#toggleMenu" class="text-dark hover:text-primary cursor-pointer transition-colors block lg:hidden focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+    <ul class="flex flex-col text-light-dark mt-10 border-b pb-5">
+      <li>
+        <%= link_to 'Inicio', root_path, class: 'hover:text-primary transition-colors block py-3' %>
+      </li>
+      <li>
+        <%= link_to 'Buscar empleo', jobs_path, class: 'hover:text-primary transition-colors block py-3' %>
+      </li>
+      <li>
+        <%= link_to 'Buscar empresa', companies_path, class: 'hover:text-primary transition-colors block py-3' %>
+      </li>
+    </ul>
+    <div class="mt-8 space-y-6">
+      <%= link_to 'Mi cuenta', '/', class: 'border-primary text-primary py-3 text-center px-4 rounded-lg block border' %>
+      <%= link_to 'Publica tus vacantes', '/', class: 'bg-primary text-white py-3 text-center px-4 rounded-lg hover:bg-white hover:text-primary block border border-transparent hover:border-primary transition-colors' %>
+    </div>
+  </div>
+  <%# Background overlay %>
+  <button data-action="click->mobile-navbar#toggleMenu" class="w-full h-screen absolute top-0 left-0 bg-black bg-opacity-60 backdrop-filter z-10 backdrop-blur-lg" />
+</div>

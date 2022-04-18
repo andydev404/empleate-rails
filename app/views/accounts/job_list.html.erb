@@ -1,0 +1,19 @@
+<% content_for(:title) do %>
+  Empleate | <%= @company.display_name %>
+<% end %>
+
+<%= render '/shared/header', hide_search_form: true %>
+
+<section class="container px-8 sm:px-0 py-24 mx-auto">
+  <div class="mb-10">
+    <div class="mb-6 lg:mb-0">
+      <h1 class="text-2xl font-bold mb-2 text-dark"><%= @company.display_name %> - Vacantes (<%= @company.jobs.size %>)</h1>
+      <div class="h-1 w-20 bg-primary rounded"></div>
+    </div>
+  </div>
+  <div class="grid lg:grid-cols-3 gap-6">
+    <%= render partial: '/shared/job_card', collection: @company.jobs, as: 'job' %>
+  </div>
+</section>
+
+<%= render partial: '/shared/footer' %>

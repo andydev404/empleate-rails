@@ -1,0 +1,99 @@
+<% content_for(:title) do %>
+  Empleate | Encuentra las mejores ofertas de empleo
+<% end %>
+
+<% hero_title = capture do %>
+  Encuentra las mejores ofertas de <span class="text-primary">empleo</span>
+<% end %>
+
+<%= render '/shared/header', hero_title: hero_title %>
+
+<section class="container px-8 sm:px-0 py-24 mx-auto">
+  <div class="mb-10">
+    <div class="mb-6 lg:mb-0">
+      <h1 class="text-2xl font-bold mb-2 text-dark">Empresas que publican sus vacantes</h1>
+      <div class="h-1 w-20 bg-primary rounded"></div>
+    </div>
+  </div>
+  <div class="grid lg:grid-cols-3 gap-6">
+    <%= render partial: '/shared/company_card', collection: @companies, as: 'company' %>
+  </div>
+</section>
+
+<section class="bg-light-primary">
+  <div class="container px-8 sm:px-0 py-24 mx-auto">
+    <div class="mb-10">
+      <div class="mb-6 lg:mb-0">
+        <h1 class="text-2xl font-bold mb-2 text-dark">Últimas ofertas de empleo</h1>
+        <div class="h-1 w-20 bg-primary rounded"></div>
+      </div>
+    </div>
+    <div class="grid lg:grid-cols-3 gap-6">
+      <%= render partial: '/shared/job_card', collection: @jobs, as: 'job' %>
+    </div>
+    <div class="text-center mt-10">
+      <%= link_to 'Ver más ofertas de empleo', jobs_path, class: 'bg-primary border border-transparent hover:border-primary hover:bg-white hover:text-primary items-center text-white inline-block py-3 px-8 rounded-lg transition-colors'  %>
+    </div>
+  </div>
+</section>
+
+<section class="container px-8 sm:px-0 py-24 mx-auto">
+  <div class="mb-10">
+    <div class="mb-6 lg:mb-0">
+      <h1 class="text-2xl font-bold mb-2 text-dark">Trabaja cerca de casa</h1>
+      <div class="h-1 w-20 bg-primary rounded"></div>
+    </div>
+  </div>
+  <div class="grid lg:grid-cols-2 gap-8">
+    <div class="cursor-pointer">
+      <a href="/ofertas-empleo?province=santiago" class="block relative h-64 rounded overflow-hidden">
+        <img
+          alt="ecommerce"
+          class="object-cover object-center w-full h-full block"
+          src="https://d1zzxdyvtq79bu.cloudfront.net/uploads/images/landings/80/7e/monumento-a-lo-heroes-de-la-restauracion.jpg"
+        />
+      </a>
+      <div class="mt-4 text-center">
+        <h2 class="font-bold">Santiago</h2>
+      </div>
+    </div>
+    <div class="cursor-pointer">
+      <a href="/ofertas-empleo?province=santo-domingo" class="block relative h-64 rounded overflow-hidden">
+        <img
+          alt="ecommerce"
+          class="object-cover object-center w-full h-full block"
+          src="https://cdn.britannica.com/54/197354-050-5BE2B0AF/Statue-front-cathedral-Santa-Maria-la-Menor.jpg"
+        />
+      </a>
+      <div class="mt-4 text-center">
+        <h2 class="font-bold">Santo Domingo</h2>
+      </div>
+    </div>
+    <div class="cursor-pointer">
+      <a href="/ofertas-empleo?province=puerto-plata" class="block relative h-64 rounded overflow-hidden">
+        <img
+          alt="ecommerce"
+          class="object-cover object-center w-full h-full block"
+          src="https://eldinero.com.do/wp-content/uploads/Puerto-Plata-centro-historico-polo-turistico.jpg"
+        />
+      </a>
+      <div class="mt-4 text-center">
+        <h2 class="font-bold">Puerto Plata</h2>
+      </div>
+    </div>
+    <div class="cursor-pointer">
+      <a href="/ofertas-empleo?province=samana" class="block relative h-64 rounded overflow-hidden">
+        <img
+          alt="ecommerce"
+          class="object-cover object-center w-full h-full block"
+          src="https://upload.wikimedia.org/wikipedia/commons/4/41/Santa_Barbara_de_Saman%C3%A1_%28Dominican_Republic%29.jpeg"
+        />
+      </a>
+      <div class="mt-4 text-center">
+        <h2 class="font-bold">Samaná</h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%= render '/shared/footer' %>

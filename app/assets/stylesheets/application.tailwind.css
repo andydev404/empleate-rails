@@ -1,0 +1,16 @@
+@import 'actiontext.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.header {
+  background: linear-gradient(to left, transparent, #f7fcf8 50%),
+    url("https://images.pexels.com/photos/6231722/pexels-photo-6231722.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
+      center center / cover no-repeat;
+}
+
+@media (max-width: 992px) {
+  .header {
+    background: #f7fcf8;
+  }
+}

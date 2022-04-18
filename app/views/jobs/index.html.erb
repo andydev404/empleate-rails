@@ -1,0 +1,24 @@
+<% content_for(:title) do %>
+  Empleate | Encuentra las mejores ofertas de empleo
+<% end %>
+
+<% hero_title = capture do %>
+  <%= @jobs.size %> ofertas de <span class="text-primary">empleo</span> encontradas
+<% end %>
+
+<%= render '/shared/header', hero_title: hero_title %>
+
+<section>
+  <div class="container md:space-x-8 px-8 flex-col md:flex-row sm:px-0 py-24 mx-auto flex items-start justify-between">
+
+    <%= render '/shared/ads' %>
+
+    <div class="space-y-8 flex-1">
+      <%= render partial: '/shared/job_card', collection: @jobs, as: 'job' %>
+    </div>
+
+    <%= render '/shared/ads' %>
+  </div>
+</section>
+
+<%= render partial: '/shared/footer' %>

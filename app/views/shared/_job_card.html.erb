@@ -1,0 +1,59 @@
+<%= link_to job_details_path(job.slug), class: 'block'  do %>
+<div class="bg-white p-6 rounded-lg border border-gray-100 hover:border-primary transition-colors cursor-pointer relative">
+  <div class="flex items-start space-x-5">
+    <% if job.account.logo.attached? %>
+      <%= image_tag job.account.logo, class: 'rounded w-16 h-16 object-cover object-center' %>
+    <% else %>
+      <img
+        class="rounded w-16 h-16 object-cover object-center"
+        src="https://dummyimage.com/720x400"
+        alt="content"
+      />
+    <% end %>
+    <div>
+      <h3 class="tracking-widest text-primary"><%= job.account.display_name %></h3>
+      <h2 class="text-lg text-dark font-bold leading-6 mb-3"><%= job.title %></h2>
+    </div>
+  </div>
+  <div class="text-sm flex items-center flex-wrap text-light-dark mt-4">
+    <div class="flex items-center space-x-1 mr-2 lg:mr-5">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="w-5 text-light-dark"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+        />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+      </svg>
+      <span><%= job.province.title %></span>
+    </div>
+    <div class="flex items-center space-x-1">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="w-5 text-light-dark"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+        />
+      </svg>
+      <span><%= job.created_at.strftime("%d-%m-%Y") %></span>
+    </div>
+  </div>
+  <p class="mt-5 text-light-dark">
+    <%= job.description.to_plain_text.truncate(150) %>
+  </p>
+</div>
+<% end %>

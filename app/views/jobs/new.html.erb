@@ -1,0 +1,28 @@
+<% content_for(:title) do %>
+  Empleate | Nueva vacante
+<% end %>
+
+<%= render '/shared/header', hide_search_form: true %>
+
+<section class="max-w-screen-md px-8 sm:px-0 py-24 mx-auto">
+  <%= simple_form_for @job do |f| %>
+    <%= render 'shared/error_messages', resource: @job %>
+    <div>
+      <label class="font-bold">¿Qué estás buscando?</label>
+      <%= f.input_field :title, placeholder: 'Diseñador gráfico', class: 'mt-1 focus:ring-0 focus:border-primary block w-full shadow-sm sm:text-sm border-gray-300 rounded-md' %>
+    </div>
+    <div class="mt-6">
+      <label class="font-bold">Provincia</label>
+      <%= f.input_field :province_id, include_blank: false, collection: @provinces, class: 'mt-1 focus:ring-0 focus:border-primary block w-full shadow-sm sm:text-sm border-gray-300 rounded-md' %>
+    </div>
+    <div class="mt-6">
+      <label class="block mb-1 font-bold">Descripción</label>
+      <%= f.rich_text_area :description, class: 'mt-1 focus:ring- overflow-y-auto focus:border-primary block w-full shadow-sm sm:text-sm border-gray-300 rounded-md h-80' %>
+    </div>
+    <div class="mt-6 text-right">
+      <%= f.submit 'Publicar vacante', data: { turbo: 'false'}, class: 'cursor-pointer inline-flex justify-center py-3 px-4 border border-transparent shadow-sm font-medium rounded-md text-white bg-primary hover:bg-dark-primary focus:outline-none focus:ring-0' %>
+    </div>
+  <% end %>
+</section>
+
+<%= render partial: '/shared/footer' %>

@@ -1,0 +1,72 @@
+<% hide_search_form = local_assigns[:hide_search_form] %>
+
+<header class="relative <%= 'pb-16' if hide_search_form.blank? %> header">
+  <div class="py-6 z-10 relative">
+    <div class="container mx-auto flex justify-between items-center px-8 sm:px-0">
+      <div class="flex items-center">
+        <%= link_to root_path, class: 'font-bold text-xl' do %>
+          Empleate<span class="text-primary">.</span>
+        <% end %>
+        <nav class="ml-8 hidden lg:block">
+          <ul class="flex items-center space-x-5 text-light-dark">
+            <li>
+              <%= link_to 'Inicio', root_path, class: 'hover:text-primary transition-colors' %>
+            </li>
+            <li>
+              <%= link_to 'Buscar empleo', jobs_path, class: 'hover:text-primary transition-colors' %>
+            </li>
+            <li>
+              <%= link_to 'Buscar empresa', companies_path, class: 'hover:text-primary transition-colors' %>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="flex items-center space-x-8"  data-controller="mobile-navbar">
+        <button data-action="click->mobile-navbar#toggleMenu" class="text-dark hover:text-primary cursor-pointer transition-colors block lg:hidden focus:outline-none">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+        <%= link_to 'Mi cuenta', account_signed_in? ? account_path(current_account) : new_account_session_path, class: 'hidden lg:block bg-transparent hover:text-primary hover:border-primary transition-colors text-white border-b' %>
+        <%= link_to 'Publica tus vacantes', account_signed_in? ? jobs_new_path : new_account_session_path, class: 'bg-primary text-white hidden lg:flex items-center h-12 py-1 px-4 rounded-lg hover:bg-white hover:text-primary border border-transparent hover:border-primary transition-colors' %>
+      </div>
+    </div>
+    <% if hide_search_form.blank? %>
+      <div class="container mx-auto px-8 sm:px-0 mt-32">
+        <% if local_assigns[:hero_title].present?  %>
+          <h2 class="font-bold text-3xl text-dark">
+            <%= hero_title %>
+          </h2>
+        <% end%>
+        <div data-controller="job" class="bg-white border rounded-lg lg:w-3/4 mt-8 border-gray-200 p-8 flex flex-col md:flex-row items-center justify-between md:space-x-6">
+          <div class="w-full">
+            <label for="search_term" class="leading-7 text-light-dark">Busco ofertas de</label>
+            <input
+              type="text"
+              id="search_term"
+              value="<%= params[:search_term] %>"
+              name="search_term"
+              placeholder="Puesto, empresa o palabra clave"
+              class="form-input bg-white h-12 w-full rounded-lg border border-gray-200 focus:border-primary focus:ring-0 text-base outline-none text-dark py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+            />
+          </div>
+          <div class="w-full mt-6 md:mt-0 md:max-w-xs">
+            <label class="leading-7 text-light-dark">
+              En
+            </label>
+            <%= select(:province, :province_id, Province.all.collect { |p| [ p.title, p.slug ] }, { include_blank: 'Toda República Dominicana', selected: params[:province] }, { class: 'form-select block w-full h-12 rounded-lg bg-white border border-gray-200 focus:border-primary focus:ring-0 text-base text-dark py-1 px-3 leading-8 transition-colors duration-200 ease-in-out outline-none' }) %>
+          </div>
+          <div>
+            <label class="leading-7 text-sm text-light-dark">
+              &nbsp;
+            </label>
+              <button data-action="click->job#redirect_to_jobs_with_search_params" class="bg-primary border border-transparent hover:border-primary hover:bg-white hover:text-primary h-12 items-center text-white flex py-1 px-8 rounded-lg transition-colors">
+                Buscar
+              </button>
+          </div>
+        </div>
+      <% end %>
+  </div>
+</header>
+
+<%= render '/shared/mobile_navbar' %>
