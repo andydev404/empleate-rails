@@ -23,6 +23,7 @@ gem 'ulid'
 gem "avatarly"
 gem 'meilisearch-rails'
 gem 'simple_form'
+gem "aws-sdk-s3", require: false
 
 group :development, :test do
   gem 'dotenv-rails'
