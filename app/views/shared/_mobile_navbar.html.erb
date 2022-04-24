@@ -22,8 +22,8 @@
       </li>
     </ul>
     <div class="mt-8 space-y-6">
-      <%= link_to 'Mi cuenta', '/', class: 'border-primary text-primary py-3 text-center px-4 rounded-lg block border' %>
-      <%= link_to 'Publica tus vacantes', '/', class: 'bg-primary text-white py-3 text-center px-4 rounded-lg hover:bg-white hover:text-primary block border border-transparent hover:border-primary transition-colors' %>
+      <%= link_to 'Mi cuenta', account_signed_in? ? account_path(current_account) : new_account_session_path, class: 'border-primary text-primary py-3 text-center px-4 rounded-lg block border' %>
+      <%= link_to 'Publica tus vacantes', account_signed_in? ? jobs_new_path : new_account_session_path, class: 'bg-primary text-white py-3 text-center px-4 rounded-lg hover:bg-white hover:text-primary block border border-transparent hover:border-primary transition-colors' %>
     </div>
   </div>
   <%# Background overlay %>

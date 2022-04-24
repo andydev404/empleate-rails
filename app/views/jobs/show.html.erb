@@ -4,12 +4,12 @@
 
 <%= render '/shared/header', hide_search_form: true %>
 
-<section class=" max-w-screen-lg px-8 sm:px-0 py-24 md:space-x-8 mx-auto flex items-start">
-  <div class="flex-1">
+<section class=" max-w-screen-lg px-8 lg:px-0 py-24 lg:space-x-8 mx-auto flex items-start flex-col lg:flex-row">
+  <div class="flex-1 w-full">
     <%= image_tag @job.account.cover_image.url, alt: 'cover image', class: 'h-52 rounded-t rounded-b-none w-full object-cover object-center' %>
-    <div class="flex items-start md:space-x-5 bg-light-primary px-4 py-8">
+    <div class="flex items-start bg-light-primary px-4 py-8">
       <%= image_tag @job.account.logo.url, alt: @job.account.display_name, class: 'h-28 rounded w-28 object-cover object-center' %>
-      <div>
+      <div class="ml-5">
         <h2 class="text-xl text-dark font-bold leading-6"><%= @job.title %></h2>
         <h3 class="tracking-widest text-primary"><%= @job.account.display_name %></h3>
         <div class="text-sm flex items-center flex-wrap text-light-dark mt-4">
@@ -63,7 +63,7 @@
       </div>
     </div>
   </div>
-  <div class="w-80 space-y-5 sticky top-5">
+  <div class="w-full mt-10 lg:mt-0 lg:w-80 space-y-5 lg:sticky top-5">
     <div class="rounded-lg border border-gray-100 px-4 py-5 bg-light-primary">
       <h3 class="font-medium text-lg">Compañia</h3>
       <ul class="mt-5 text-light-dark text-sm space-y-4">
